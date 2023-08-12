@@ -10,8 +10,6 @@ const saveFormState = throttle(() => {
     message: messageInput.value,
   };
   localStorage.setItem('feedback-form-state', JSON.stringify(formState));
-
-  console.log('Form state saved:', formState);
 }, 500);
 
 emailInput.addEventListener('input', saveFormState);
@@ -29,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 form.addEventListener('submit', event => {
   event.preventDefault();
   localStorage.removeItem('feedback-form-state');
-  emailInput.value = '';
-  messageInput.value = '';
   console.log('Form submitted with values:', {
     email: emailInput.value,
     message: messageInput.value,
   });
+  emailInput.value = '';
+  messageInput.value = '';
 });
